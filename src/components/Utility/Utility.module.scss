@@ -1,0 +1,24 @@
+@charset 'utf-8';
+@use '@/styles/mixin' as *;
+
+.subTitleContainer {
+	width: min(100%, 1080px);
+	margin-block: 2rem;
+	margin-inline: auto;
+	overflow: hidden;
+	color: var(--textColorDark);
+	font-family: 'Inter', sans-serif;
+	font-weight: 600;
+
+	@include mq-max(lg) {
+		margin-block: 1.5rem;
+	}
+}
+
+.subTitle {
+	width: fit-content;
+	margin-inline: auto;
+	font-size: var(--subTitleFontSize);
+	font-weight: lighter;
+	line-height: 1;
+}

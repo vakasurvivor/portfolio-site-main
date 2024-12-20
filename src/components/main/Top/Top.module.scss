@@ -1,0 +1,12 @@
+@charset 'utf-8';
+@use '@/styles/mixin' as *;
+
+.container {
+	// @include responsive-margin-block-lg(18rem, 'end');
+	display: grid;
+	width: 100%;
+	min-height: 100dvh;
+	padding-inline: 1.5rem;
+	overflow: hidden;
+	place-items: center;
+}

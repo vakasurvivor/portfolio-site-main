@@ -1,0 +1,88 @@
+@charset 'utf-8';
+@use '@/styles/mixin' as *;
+
+.container {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	min-height: 100dvh;
+	overflow: hidden;
+	background-attachment: fixed;
+	background-color: var(--mainColorDark);
+	background-image: radial-gradient(
+		50% 50% at 50% 50%,
+		hsl(0, 0%, 15%) 0%,
+		hsl(0, 0%, 0%) 100%
+	);
+	color: var(--textColorDark);
+
+	&::before {
+		content: '';
+		position: absolute;
+		z-index: -2;
+		opacity: 0.2;
+		background-attachment: fixed;
+		background-image: url('../../../assets/img/harajuku001.jpg');
+		background-position: center;
+		background-size: cover;
+		inset: 0;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		top: -100%;
+		left: -100%;
+		width: 300%;
+		height: 300%;
+		animation-name: grained;
+		animation-duration: 4s;
+		animation-timing-function: steps(20);
+		animation-iteration-count: infinite;
+		background-image: url('../../../assets/img/noise.png');
+
+		@keyframes grained {
+			0% {
+				transform: translate(-10%, 10%);
+			}
+			10% {
+				transform: translate(-25%, 0%);
+			}
+			20% {
+				transform: translate(-30%, 10%);
+			}
+			30% {
+				transform: translate(-30%, 30%);
+			}
+			40% {
+				transform: translate();
+			}
+			50% {
+				transform: translate(-15%, 10%);
+			}
+			60% {
+				transform: translate(-20%, 20%);
+			}
+			70% {
+				transform: translate(-5%, 20%);
+			}
+			80% {
+				transform: translate(-25%, 5%);
+			}
+			90% {
+				transform: translate(-30%, 25%);
+			}
+			100% {
+				transform: translate(-10%, 10%);
+			}
+		}
+	}
+}
+
+.inner {
+	position: relative;
+	width: 100%;
+	height: fit-content;
+	padding-inline: 1.5rem;
+}

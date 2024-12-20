@@ -1,0 +1,209 @@
+@charset 'utf-8';
+@use '@/styles/mixin' as *;
+
+.container {
+	width: min(100%, 1080px);
+	margin-inline: auto;
+	color: var(--textColorLight);
+	container: company / inline-size;
+	@include responsive-margin-block-md(12rem, 'end');
+}
+
+.access {
+	display: flex;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	border: 1px solid hsla(240, 8%, 65%, 0.2);
+	border-radius: 8px;
+	background-color: hsla(0, 0%, 0%, 0.3);
+	backdrop-filter: blur(3px);
+}
+.location {
+	display: flex;
+	flex-direction: column;
+	width: calc(100% / 4);
+}
+
+.textarea {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: 50%;
+
+	&:first-child {
+		border-block-end: 1px solid hsla(240, 8%, 65%, 0.2);
+	}
+}
+
+.desc {
+	width: 100%;
+
+	h4 {
+		position: relative;
+		padding-inline-start: 1rem;
+	}
+
+	.text {
+		width: 100%;
+		padding-block-start: 1rem;
+		padding-inline: 1rem;
+		@include mq-max(sm) {
+			font-size: 0.9rem;
+		}
+
+		& > span {
+			display: inline-flex;
+			align-items: center;
+
+			&:nth-child(2) {
+				display: block;
+				padding-block-end: 0.5rem;
+				padding-inline-start: calc(1rem + 4px);
+			}
+
+			&:nth-child(5) {
+				display: block;
+				padding-inline-start: calc(1rem + 4px);
+			}
+		}
+	}
+}
+
+.map {
+	width: calc(100% / 4 * 3);
+
+	iframe {
+		display: block;
+		width: 100%;
+		transition: all 0.3s ease;
+		filter: grayscale(0.75);
+		aspect-ratio: 16 / 9;
+	}
+
+	&:hover {
+		iframe {
+			filter: grayscale(0.15);
+		}
+	}
+}
+
+@container company (width <= 980px) {
+	.access {
+		flex-direction: column;
+	}
+	.location {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+	}
+	.textarea {
+		height: 100%;
+		padding-block: 1rem;
+
+		&:first-child {
+			border-block-end: none;
+		}
+		&:last-child {
+			border-inline-start: 1px solid var(--borderSolidColor);
+		}
+	}
+	.text {
+		width: 100%;
+	}
+
+	.map {
+		width: 100%;
+		iframe {
+			aspect-ratio: 16 / 9;
+		}
+	}
+}
+@container company (width <= 576px) {
+	.textarea {
+		&:last-child {
+			border-inline-start: 1px solid var(--borderSolidColor);
+		}
+	}
+
+	.map {
+		iframe {
+			aspect-ratio: 4 / 3;
+		}
+	}
+}
+@container company (width <= 490px) {
+	.location {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+	.textarea {
+		&:last-child {
+			border-block-start: 1px solid var(--borderSolidColor);
+			border-inline-start: none;
+		}
+	}
+
+	.map {
+		iframe {
+			aspect-ratio: 1 / 1;
+		}
+	}
+}
+
+@font-face {
+	font-family: 'icomoon';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../../../assets/fonts/icomoon.eot?t6kbep');
+	src:
+		url('../../../assets/fonts/icomoon.eot?t6kbep#iefix')
+			format('embedded-opentype'),
+		url('../../../assets/fonts/icomoon.ttf?t6kbep') format('truetype'),
+		url('../../../assets/fonts/icomoon.woff?t6kbep') format('woff'),
+		url('../../../assets/fonts/icomoon.svg?t6kbep#icomoon') format('svg');
+	font-display: block;
+}
+
+[class^='icon-'],
+[class*='icon-'] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'icomoon' !important;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1;
+	text-transform: none;
+	speak: never;
+}
+
+.icon-JR {
+	padding-inline-end: 4px;
+	font-size: 1rem;
+	&:before {
+		content: '\e900';
+		color: hsl(121, 87%, 29%);
+	}
+}
+
+.icon-TokyoMetro {
+	padding-inline-end: 4px;
+	font-size: 1rem;
+	scale: 0.9;
+
+	.icon-background:before {
+		content: '\e901';
+		color: hsl(195, 100%, 43%);
+	}
+
+	.icon-logo:before {
+		content: '\e902';
+		margin-left: -1em;
+		color: var(--textColorLight);
+	}
+}
